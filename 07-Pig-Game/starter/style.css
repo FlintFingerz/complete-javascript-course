@@ -2,7 +2,7 @@
 
 * {
   margin: 0;
-  padding: 0; 
+  padding: 0;
   box-sizing: inherit;
 }
 
@@ -164,4 +164,8 @@ main {
 .player--winner .name {
   font-weight: 700;
   color: #c7365f;
+}
+
+.hidden {
+  display: none;
 }

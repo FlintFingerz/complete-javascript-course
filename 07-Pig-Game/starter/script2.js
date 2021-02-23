@@ -122,5 +122,3 @@ btnRoll.addEventListener(`click`, diceRoll);
 btnHold.addEventListener(`click`, hold);
 
 btnNew.addEventListener(`click`, newGame);
-
-new
