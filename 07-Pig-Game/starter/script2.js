@@ -1,13 +1,15 @@
 'use strict';
 
+// THIS IS THE CODE THAT I DID PRETTY MUCH ON MY OWN BEFORE GOING THROUGH THE VIDEOS FROM JONAS TO SIMPLIFY IT.
+
 const player0 = document.querySelector(`.player--0`);
 const player1 = document.querySelector(`.player--1`);
 const btnRoll = document.querySelector(`.btn--roll`);
 const btnHold = document.querySelector(`.btn--hold`);
 const btnNew = document.querySelector(`.btn--new`);
-const diceEl = document.querySelector(`.dice`);
-const score1El = document.querySelector(`#score--0`);
-const score2El = document.querySelector(`#score--1`);
+const diceEl = document.querySelector(`.dice`); // ADDED THIS FROM JONAS
+const score1El = document.querySelector(`#score--0`); // ADDED THIS FROM JONAS
+const score2El = document.querySelector(`#score--1`); // ADDED THIS FROM JONAS
 
 diceEl.classList.add(`hidden`);
 score1El.textContent = `0`;
