@@ -1,5 +1,5 @@
 'use strict';
-/*
+
 // Data needed for a later exercise
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -20,7 +20,7 @@ const openingHours = {
     close: 24,
   },
 };
-/*
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -50,144 +50,30 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
-*/
 
-//////////////////////////////////////////
-// Coding Challenge #1
+/////////////////////////////////////
+// Sets
+// Sets values have to be unique, no duplicates will be stored in the set.
+// Sets do not have indexes, so there is no way of getting data out of a set.
+const ordersSet = new Set([
+  `Pasta`,
+  `Pizza`,
+  `Pizza`,
+  `Risotto`,
+  `Pasta`,
+  `Pizza`,
+]);
+console.log(ordersSet);
 
-const printGoals = function (...names) {
-  for (let i = 0; i < names.length; i++) {
-    console.log(names[i]);
-  }
-  console.log(names.length);
-};
+console.log(new Set(`Jonas`));
 
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
-
-// const [players1, players2] = game.players;
-// console.log(players1, players2);
-
-// const [gk, ...fieldplayers] = players1;
-// console.log(gk, fieldplayers);
-
-// const allPlayers = [...players1, ...players2];
-// console.log(allPlayers);
-
-// const players1Final = [...players1, `Thiago`, `Coutinho`, `Perisic`];
-// console.log(players1Final);
-
-// const {
-//   odds: { team1, x: draw, team2 },
-// } = game;
-// console.log(team1, draw, team2);
-
-// const team1 = game.odds[0];
-// const draw = game.odds[1];
-// const team2 = game.odds[2];
-
-// team1 < team2 && console.log(`Team 1 is more likely to win`);
-
-// printGoals(`Davies`, `Muller`, `Lewandowski`, `Kimmich`);
-// printGoals(...game.scored);
-
-////////////////////////////////////////////
-// Coding Challenge #2
-
-// const  = game.scored.entries();
-// console.log(scorers);
-
-// #1
-for (const [goal, scorer] of game.scored.entries()) {
-  console.log(`Goal ${goal + 1}: ${scorer}`);
-}
-
-// let totalOdds = 0;
-
-// #2
-const oddsValues = Object.values(game.odds);
-console.log(oddsValues);
-let average = 0;
-// console.log(oddsValues);
-
-for (const odd of oddsValues) average += odd;
-average /= oddsValues.length;
-console.log(average);
-
-// #3
-const oddEntries = Object.entries(game.odds);
-// console.log(oddEntries);
-
-for (const [team, teamOdds] of oddEntries) {
-  const teamStr = team === `x` ? `draw` : `victory ${game[team]}: `;
-  console.log(`Odd of ${teamStr} ${teamOdds}`);
-}
-
-// Bonus
-const scorers = {};
-
-for (const player of game.scored) {
-  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
-}
-
-console.log(scorers);
-
-//////////////////////
-// Extra shit I didn't need for part 3 of the coding challenge #2
-// const [team1, team2] = Object.values(game);
-// console.log(team1, team2);
-
-// for (const [team, teamOdds] of oddEntries) {
-//   console.log(`Odds of victory ${team}: ${teamOdds}`);
-// }
-
-// const [team, teamOdds] = Object.values(oddEntries);
-// console.log(teamOdds);
-
-// console.log(`Odds of victory ${team1}: ${game.odds.team1}`);
-// console.log(`Odds of draw: ${game.odds.x}`);
-// console.log(`Odds of victory ${team2}: ${game.odds.team2}`);
-
-// console.log(teamOdds);
-// console.log(totalOdds);
+console.log(ordersSet.size);
+console.log(ordersSet.has(`Pizza`));
+console.log(ordersSet.has(`Bread`));
+ordersSet.add(`Garlic Bread`);
+ordersSet.add(`Garlic Bread`);
+ordersSet.delete(`Risotto`);
+console.log(ordersSet);
 
 /*
 // Property NAMES
@@ -486,3 +372,140 @@ Destructuring Arrays
  Destructuring Objects
 
 */
+
+//////////////////////////////////////////
+// Coding Challenge #1
+
+// const printGoals = function (...names) {
+//   for (let i = 0; i < names.length; i++) {
+//     console.log(names[i]);
+//   }
+//   console.log(names.length);
+// };
+
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
+
+// const [players1, players2] = game.players;
+// console.log(players1, players2);
+
+// const [gk, ...fieldplayers] = players1;
+// console.log(gk, fieldplayers);
+
+// const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
+
+// const players1Final = [...players1, `Thiago`, `Coutinho`, `Perisic`];
+// console.log(players1Final);
+
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
+// console.log(team1, draw, team2);
+
+// const team1 = game.odds[0];
+// const draw = game.odds[1];
+// const team2 = game.odds[2];
+
+// team1 < team2 && console.log(`Team 1 is more likely to win`);
+
+// printGoals(`Davies`, `Muller`, `Lewandowski`, `Kimmich`);
+// printGoals(...game.scored);
+
+////////////////////////////////////////////
+// Coding Challenge #2
+
+// const  = game.scored.entries();
+// console.log(scorers);
+
+// #1
+// for (const [goal, scorer] of game.scored.entries()) {
+//   console.log(`Goal ${goal + 1}: ${scorer}`);
+// }
+
+// // let totalOdds = 0;
+
+// // #2
+// const oddsValues = Object.values(game.odds);
+// console.log(oddsValues);
+// let average = 0;
+// // console.log(oddsValues);
+
+// for (const odd of oddsValues) average += odd;
+// average /= oddsValues.length;
+// console.log(average);
+
+// // #3
+// const oddEntries = Object.entries(game.odds);
+// // console.log(oddEntries);
+
+// for (const [team, teamOdds] of oddEntries) {
+//   const teamStr = team === `x` ? `draw` : `victory ${game[team]}: `;
+//   console.log(`Odd of ${teamStr} ${teamOdds}`);
+// }
+
+// // Bonus
+// const scorers = {};
+
+// for (const player of game.scored) {
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// }
+
+// console.log(scorers);
+
+//////////////////////
+// Extra shit I didn't need for part 3 of the coding challenge #2
+// const [team1, team2] = Object.values(game);
+// console.log(team1, team2);
+
+// for (const [team, teamOdds] of oddEntries) {
+//   console.log(`Odds of victory ${team}: ${teamOdds}`);
+// }
+
+// const [team, teamOdds] = Object.values(oddEntries);
+// console.log(teamOdds);
+
+// console.log(`Odds of victory ${team1}: ${game.odds.team1}`);
+// console.log(`Odds of draw: ${game.odds.x}`);
+// console.log(`Odds of victory ${team2}: ${game.odds.team2}`);
+
+// console.log(teamOdds);
+// console.log(totalOdds);
