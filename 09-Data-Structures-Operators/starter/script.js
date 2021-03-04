@@ -51,10 +51,110 @@ const restaurant = {
   },
 };
 
+/*
+///////////////////////////////
+// Summary: Which Data Structure To Use?
+// Arrays or Sets: Simple list of values.
+// Objects or Maps: Key/Value pairs.
+// Arrays
+Use when you need an ordered list of values that might contain duplicates
+Use when you need to manipulate data
+
+// Sets
+Use when you need to work with unique values
+Use when high-performance is really important
+Use wto remove duplicates from arrays
+
+// Objects
+More traditional key/value store
+Easier to write and access values with . and []
+Use when you need to include functions(methods)
+Use when working with JSON
+
+// Maps
+Better Performance
+Keys can have any data type
+Easy to iterate
+Easy to compute size
+Use when you simply need to map key to values
+Use when you need keys that are not strings
+
+/*
+////////////////////////////////////
+// Maps: Iteration
+const question = new Map([
+  [`question`, `What is the best programming lanaguage in the world?`],
+  [1, `C`],
+  [2, `Java`],
+  [3, `JavaScript`],
+  [`correct`, 3],
+  [true, `Correct`],
+  [false, `Try again!`],
+]);
+console.log(question);
+
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+
+console.log(hoursMap);
+
+// Quiz app
+console.log(question.get(`question`));
+for (const [key, value] of question) {
+  if (typeof key === `number`) console.log(`Answer ${key}: ${value}`);
+}
+const answer = 3;
+console.log(answer);
+
+console.log(question.get(question.get(`correct`) === answer));
+
+// Convert map to array
+console.log([...question]);
+console.log([...question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+/////////////////////////////////////
+// Maps
+// Maps map values to keys, just like in objects, values are stored in key:value pairs.
+// Maps keys can have any type.
+
+const rest = new Map();
+rest.set(`name`, `Classico Italiano`);
+rest.set(1, `Firenze, Italy`);
+console.log(rest.set(2, `Lisbon, Portugal`));
+
+rest
+  .set(`categories`, ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set(`open`, 11)
+  .set(`close`, 23)
+  .set(true, `We are open :D`)
+  .set(false, `We are closed :(`);
+
+console.log(rest.get(`name`));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 21;
+console.log(rest.get(time > rest.get(open) && rest.get(close)));
+
+console.log(rest.has(`categories`));
+rest.delete(2);
+// rest.clear();
+
+const arr = [1, 2];
+rest.set(arr, `Test`);
+rest.set(document.querySelector(`h1`), `Heading`);
+console.log(rest);
+console.log(rest.size);
+
+console.log(rest.get(arr));
+
 /////////////////////////////////////
 // Sets
 // Sets values have to be unique, no duplicates will be stored in the set.
 // Sets do not have indexes, so there is no way of getting data out of a set.
+// The main use of sets is to remove duplicate values of arrays.
 const ordersSet = new Set([
   `Pasta`,
   `Pizza`,
@@ -73,9 +173,21 @@ console.log(ordersSet.has(`Bread`));
 ordersSet.add(`Garlic Bread`);
 ordersSet.add(`Garlic Bread`);
 ordersSet.delete(`Risotto`);
+// ordersSet.clear();
 console.log(ordersSet);
 
-/*
+for (const order of ordersSet) console.log(order);
+
+// Example
+const staff = [`Waiter`, `Chef`, `Waiter`, `Manager`, `Chef`, `Waiter`];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(
+  new Set([`Waiter`, `Chef`, `Waiter`, `Manager`, `Chef`, `Waiter`]).size
+);
+
+console.log(new Set(`jonasschmedtmann`).size);
+
 // Property NAMES
 const properties = Object.keys(openingHours);
 console.log(properties);
@@ -371,7 +483,6 @@ Destructuring Arrays
 
  Destructuring Objects
 
-*/
 
 //////////////////////////////////////////
 // Coding Challenge #1
@@ -383,129 +494,184 @@ Destructuring Arrays
 //   console.log(names.length);
 // };
 
-// const game = {
-//   team1: 'Bayern Munich',
-//   team2: 'Borrussia Dortmund',
-//   players: [
-//     [
-//       'Neuer',
-//       'Pavard',
-//       'Martinez',
-//       'Alaba',
-//       'Davies',
-//       'Kimmich',
-//       'Goretzka',
-//       'Coman',
-//       'Muller',
-//       'Gnarby',
-//       'Lewandowski',
-//     ],
-//     [
-//       'Burki',
-//       'Schulz',
-//       'Hummels',
-//       'Akanji',
-//       'Hakimi',
-//       'Weigl',
-//       'Witsel',
-//       'Hazard',
-//       'Brandt',
-//       'Sancho',
-//       'Gotze',
-//     ],
-//   ],
-//   score: '4:0',
-//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-//   date: 'Nov 9th, 2037',
-//   odds: {
-//     team1: 1.33,
-//     x: 3.25,
-//     team2: 6.5,
-//   },
-// };
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
 
-// const [players1, players2] = game.players;
-// console.log(players1, players2);
+const [players1, players2] = game.players;
+console.log(players1, players2);
 
-// const [gk, ...fieldplayers] = players1;
-// console.log(gk, fieldplayers);
+const [gk, ...fieldplayers] = players1;
+console.log(gk, fieldplayers);
 
-// const allPlayers = [...players1, ...players2];
-// console.log(allPlayers);
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
 
-// const players1Final = [...players1, `Thiago`, `Coutinho`, `Perisic`];
-// console.log(players1Final);
+const players1Final = [...players1, `Thiago`, `Coutinho`, `Perisic`];
+console.log(players1Final);
 
-// const {
-//   odds: { team1, x: draw, team2 },
-// } = game;
-// console.log(team1, draw, team2);
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+console.log(team1, draw, team2);
 
-// const team1 = game.odds[0];
-// const draw = game.odds[1];
-// const team2 = game.odds[2];
+const team1 = game.odds[0];
+const draw = game.odds[1];
+const team2 = game.odds[2];
 
-// team1 < team2 && console.log(`Team 1 is more likely to win`);
+team1 < team2 && console.log(`Team 1 is more likely to win`);
 
-// printGoals(`Davies`, `Muller`, `Lewandowski`, `Kimmich`);
-// printGoals(...game.scored);
+printGoals(`Davies`, `Muller`, `Lewandowski`, `Kimmich`);
+printGoals(...game.scored);
 
-////////////////////////////////////////////
-// Coding Challenge #2
+//////////////////////////////////////////
+Coding Challenge #2
 
-// const  = game.scored.entries();
-// console.log(scorers);
+const  = game.scored.entries();
+console.log(scorers);
 
-// #1
-// for (const [goal, scorer] of game.scored.entries()) {
-//   console.log(`Goal ${goal + 1}: ${scorer}`);
-// }
+#1
+for (const [goal, scorer] of game.scored.entries()) {
+  console.log(`Goal ${goal + 1}: ${scorer}`);
+}
 
-// // let totalOdds = 0;
+// let totalOdds = 0;
 
-// // #2
-// const oddsValues = Object.values(game.odds);
+// #2
+const oddsValues = Object.values(game.odds);
+console.log(oddsValues);
+let average = 0;
 // console.log(oddsValues);
-// let average = 0;
-// // console.log(oddsValues);
 
-// for (const odd of oddsValues) average += odd;
-// average /= oddsValues.length;
-// console.log(average);
+for (const odd of oddsValues) average += odd;
+average /= oddsValues.length;
+console.log(average);
 
-// // #3
-// const oddEntries = Object.entries(game.odds);
-// // console.log(oddEntries);
+// #3
+const oddEntries = Object.entries(game.odds);
+// console.log(oddEntries);
 
-// for (const [team, teamOdds] of oddEntries) {
-//   const teamStr = team === `x` ? `draw` : `victory ${game[team]}: `;
-//   console.log(`Odd of ${teamStr} ${teamOdds}`);
-// }
+for (const [team, teamOdds] of oddEntries) {
+  const teamStr = team === `x` ? `draw` : `victory ${game[team]}: `;
+  console.log(`Odd of ${teamStr} ${teamOdds}`);
+}
 
-// // Bonus
-// const scorers = {};
+// Bonus
+const scorers = {};
 
-// for (const player of game.scored) {
-//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
-// }
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
 
-// console.log(scorers);
+console.log(scorers);
 
-//////////////////////
-// Extra shit I didn't need for part 3 of the coding challenge #2
-// const [team1, team2] = Object.values(game);
-// console.log(team1, team2);
+////////////////////
+Extra shit I didn't need for part 3 of the coding challenge #2
+const [team1, team2] = Object.values(game);
+console.log(team1, team2);
 
-// for (const [team, teamOdds] of oddEntries) {
-//   console.log(`Odds of victory ${team}: ${teamOdds}`);
-// }
+for (const [team, teamOdds] of oddEntries) {
+  console.log(`Odds of victory ${team}: ${teamOdds}`);
+}
 
-// const [team, teamOdds] = Object.values(oddEntries);
-// console.log(teamOdds);
+const [team, teamOdds] = Object.values(oddEntries);
+console.log(teamOdds);
 
-// console.log(`Odds of victory ${team1}: ${game.odds.team1}`);
-// console.log(`Odds of draw: ${game.odds.x}`);
-// console.log(`Odds of victory ${team2}: ${game.odds.team2}`);
+console.log(`Odds of victory ${team1}: ${game.odds.team1}`);
+console.log(`Odds of draw: ${game.odds.x}`);
+console.log(`Odds of victory ${team2}: ${game.odds.team2}`);
 
-// console.log(teamOdds);
-// console.log(totalOdds);
+console.log(teamOdds);
+console.log(totalOdds);
+
+///////////////////////////////////
+// Coding Challenge #3
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+// 1.
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// 2.
+console.log(gameEvents);
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// 3.
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes`
+);
+
+// To be more specific
+// const time = [...gameEvents.keys()].pop();
+// console.log(time);
+// console.log(
+//   `An event happened, on average, every ${time / gameEvents.size} minutes`
+// );
+
+// 4.
+// How I did it on my own.
+for (const [key, value] of gameEvents) {
+  let display = ``;
+  key <= 45
+    ? (display = `[FIRST HALF] ${key}: ${value}`)
+    : (display = `[SECOND HALF] ${key}: ${value}`);
+  console.log(display);
+}
+
+// How Jonas did it.
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF] ${min}: ${event}`);
+}
+*/
