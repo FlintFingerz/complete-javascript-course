@@ -8,10 +8,6 @@ const camelCase = function () {
   const text = document.querySelector('textarea').value;
   const underscoreSplit = text.split(`\n`);
   console.log(underscoreSplit);
-  const wordsSplit = [];
-  const wordsSecond = [];
-  const wordsUpper = [];
-  let i = 0;
 
   // 2. Loop over the array we created and split each element by the underscore (_)
   //   for (const n of underscoreSplit) {
@@ -28,6 +24,7 @@ const camelCase = function () {
   // How Jonas did the above, instead of declaring i and then increasing i every iteration, he destructured and looped over underscoreSplit.entries
   for (const [i, n] of underscoreSplit.entries()) {
     const [first, second] = n.toLowerCase().trim().split(`_`);
+
     const output = `${first}${second.replace(
       second[0],
       second[0].toUpperCase()
